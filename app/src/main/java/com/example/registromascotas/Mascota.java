@@ -16,6 +16,8 @@ public class Mascota {
 
     }
 
-
-
+    @Override
+    public String toString() {
+        return this.nombre;
+    }
 }

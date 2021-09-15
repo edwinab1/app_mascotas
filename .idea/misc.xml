@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidApps/RegistroMascotas/app/src/main/res/drawable/fondo_edittext.xml" value="0.33" />
+        <entry key="..\:/AndroidApps/RegistroMascotas/app/src/main/res/drawable/ic_patita.xml" value="0.2203125" />
+        <entry key="..\:/AndroidApps/RegistroMascotas/app/src/main/res/layout/activity_main.xml" value="0.47811993517017826" />
         <entry key="..\:/Users/LAB4-SERVIDOR/AndroidStudioProjects/RegistroMascotas/app/src/main/res/layout/activity_main.xml" value="0.22" />
       </map>
     </option>

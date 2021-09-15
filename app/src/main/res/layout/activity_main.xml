@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="10"
     android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-
+    android:weightSum="10">
 
 
     <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:layout_margin="20dp"
         android:layout_weight="5"
-        android:background="@android:color/white"
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:backgroundTint="@color/colorBoton"
+        android:background="@color/colorBoton"
+        android:padding="10dp">
 
 
         <TextView
@@ -21,79 +22,108 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="Registro de vacunacion"
+
+            android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold"></TextView>
 
 
-
         <ScrollView
             android:id="@+id/scrollEdit"
-            android:layout_below="@id/tvTitulo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTitulo">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
 
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/imvLogo"
+                    android:layout_width="96dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="96dp"
+                    android:src="@drawable/perrito"
+                    app:civ_border_width="1dp"
+                    app:civ_border_color="@color/white"/>
+
+
+
+                <!--
                 <ImageView
                     android:id="@+id/imvLogo"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:background="@color/colorBoton"
-                    android:layout_centerHorizontal="true"
-                    android:layout_width="100dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/perrito"
-                    android:layout_height="100dp"/>
+                    android:src="@drawable/perrito" /> -->
 
                 <EditText
                     android:id="@+id/edtNombre"
+                    android:drawableLeft="@drawable/ic_patita"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/purple_200"
                     android:layout_width="match_parent"
-                    android:layout_below="@+id/imvLogo"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/imvLogo"
                     android:layout_marginTop="20dp"
-                    android:hint="Nombre de tu mascota"></EditText>
+                    android:background="@drawable/fondo_edittext"
+                    android:hint="Nombre de tu mascota"
+                    android:padding="10dp"></EditText>
 
 
                 <EditText
                     android:id="@+id/edtEdad"
-                    android:hint="Edad mascota"
-                    android:layout_below="@+id/edtNombre"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edtNombre"
+                    android:background="@drawable/fondo_edittext"
+                    android:hint="Edad mascota"
+                    android:inputType="number"
+                    android:drawableEnd="@drawable/ic_patita"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/purple_200"
+                    android:padding="10dp">
 
                 </EditText>
 
                 <EditText
                     android:id="@+id/edtColor"
-                    android:hint="Color"
-                    android:layout_below="@+id/edtEdad"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edtEdad"
+                    android:background="@drawable/fondo_edittext"
+                    android:hint="Color"
+                    android:padding="10dp">
 
                 </EditText>
 
 
-
                 <EditText
                     android:id="@+id/edtRaza"
-                    android:hint="Raza de tu mascota"
+                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_below="@+id/edtColor"
-                    android:layout_height="wrap_content"/>
+                    android:background="@drawable/fondo_edittext"
+                    android:hint="Raza de tu mascota"
+                    android:padding="10dp" />
 
-
-
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
 
             </RelativeLayout>
 
 
-
         </ScrollView>
-
-
 
 
     </RelativeLayout>
@@ -101,26 +131,28 @@
     <Button
         android:id="@+id/btRegistrar"
         android:layout_width="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Registrar"
-        android:layout_gravity="center_horizontal"
-        android:backgroundTint="@color/colorBoton"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/scrollEdit"
-        android:layout_height="wrap_content">
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/colorBoton"
+        android:text="Registrar">
 
 
     </Button>
 
     <RelativeLayout
-        android:layout_weight="5"
-        android:background="@android:color/holo_blue_light"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:background="@android:color/white">
 
         <ListView
             android:id="@+id/lvMascotas"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+
+            android:layout_height="wrap_content"
+            android:divider="@color/colorBoton" />
 
 
     </RelativeLayout>

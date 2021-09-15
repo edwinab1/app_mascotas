@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,54 +16,89 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-
     List<Mascota> listaMascotas = new ArrayList<>();
+    ArrayAdapter<Mascota> adaptador;
 
+    EditText edtNombre, edtRaza, edtEdad, edtColor;
+    Button btRegistrar;
+    ListView lvMascotas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setViews();
 
-        Button btRegistrar = findViewById(R.id.btRegistrar);
+         adaptador = new ArrayAdapter<Mascota>(this,
+                android.R.layout.simple_list_item_1, listaMascotas);
 
-        EditText edtNombre = findViewById(R.id.edtNombre);
-        EditText edtRaza = findViewById(R.id.edtRaza);
-        EditText edtColor = findViewById(R.id.edtColor);
-        EditText edtEdad = findViewById(R.id.edtEdad);
+         lvMascotas.setAdapter(adaptador);
 
 
         btRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                if (!validarDatos()) {
 
-                if(edtEdad.getText().toString().isEmpty()){
+                    Toast.makeText(MainActivity.this, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(MainActivity.this, "Introduce la edad", Toast.LENGTH_SHORT).show();
-
-                }else{
+                } else {
 
                     Mascota mascota = new Mascota(edtNombre.getText().toString(),
                             edtColor.getText().toString(), edtRaza.getText().toString(),
                             Integer.parseInt(edtEdad.getText().toString()));
 
-                    Toast.makeText(MainActivity.this, mascota.nombre, Toast.LENGTH_LONG).show();
+                    listaMascotas.add(mascota);
+
+                    adaptador.notifyDataSetChanged();
+                    
+                    limpiarFormulario();
+
+
                 }
 
             }
         });
+    }
 
+    private void limpiarFormulario() {
 
-
-
-
-
-
-
-
-
+        edtNombre.setText("");
+        edtRaza.setText("");
+        edtColor.setText("");
+        edtEdad.setText("");
 
     }
+
+    private void setViews() {
+
+        btRegistrar = findViewById(R.id.btRegistrar);
+        edtNombre = findViewById(R.id.edtNombre);
+        edtRaza = findViewById(R.id.edtRaza);
+        edtColor = findViewById(R.id.edtColor);
+        edtEdad = findViewById(R.id.edtEdad);
+
+        lvMascotas = findViewById(R.id.lvMascotas);
+    }
+
+    //true si esta correcto
+    private boolean validarDatos() {
+
+        if (
+                        edtEdad.getText().toString().isEmpty() ||
+                        edtNombre.getText().toString().isEmpty() ||
+                        edtColor.getText().toString().isEmpty() ||
+                        edtRaza.getText().toString().isEmpty()
+        ) {
+
+            return false;
+
+        }
+
+        return true;
+    }
+
+
 }
